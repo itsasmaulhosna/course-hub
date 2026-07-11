@@ -1,5 +1,8 @@
 "use client";
 
+import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {
   User,
@@ -9,9 +12,62 @@ import {
   EyeOff,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { signUp } from "@/lib/auth-client";
 
 export default function RegisterForm() {
-  const [showPassword, setShowPassword] = useState(false);
+    const router = useRouter();
+
+const [confirmPassword, setConfirmPassword] = useState("");
+const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+const [password, setPassword] = useState("");
+const [showPassword, setShowPassword] = useState(false);
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [loading, setLoading] = useState(false);
+const [image, setImage] = useState("");
+
+const handleRegister = async (
+  e: React.FormEvent<HTMLFormElement>
+) => {
+  e.preventDefault();
+
+  if (!name || !email || !password || !confirmPassword) {
+    toast.error("All fields are required");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    toast.error("Passwords do not match");
+    return;
+  }
+
+  try {
+    setLoading(true);
+
+    const { data, error } = await signUp.email({
+      name,
+      email,
+      password,
+        image,
+    });
+
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+
+    toast.success("Account created successfully 🎉");
+
+    setTimeout(() => {
+      router.push("/");
+    }, 1500);
+
+  } catch {
+    toast.error("Something went wrong");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <motion.section
@@ -30,7 +86,7 @@ export default function RegisterForm() {
           Create your PromptVault account.
         </p>
 
-        <form className="mt-8 space-y-5">
+        <form onSubmit={handleRegister} className="mt-8 space-y-5">
 
           {/* Name */}
 
@@ -47,10 +103,12 @@ export default function RegisterForm() {
               />
 
               <input
-                type="text"
-                placeholder="John Doe"
-                className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white outline-none transition-all duration-300 placeholder:text-gray-500 hover:border-violet-400/40 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/30"
-              />
+  type="text"
+  placeholder="John Doe"
+  value={name}
+  onChange={(e) => setName(e.target.value)}
+  className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white outline-none transition-all duration-300 placeholder:text-gray-500 hover:border-violet-400/40 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/30"
+/>
 
             </div>
           </div>
@@ -70,13 +128,40 @@ export default function RegisterForm() {
               />
 
               <input
-                type="email"
-                placeholder="john@example.com"
-                className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white outline-none transition-all duration-300 placeholder:text-gray-500 hover:border-violet-400/40 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/30"
-              />
+  type="email"
+  placeholder="john@example.com"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white outline-none transition-all duration-300 placeholder:text-gray-500 hover:border-violet-400/40 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/30"
+/>
 
             </div>
           </div>
+
+{/* Profile Image URL */}
+
+<div>
+  <label className="mb-2 block text-sm text-gray-300">
+    Profile Image URL
+  </label>
+
+  <div className="relative">
+
+    <User
+      size={20}
+      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
+    />
+
+    <input
+      type="url"
+      placeholder="https://example.com/profile.jpg"
+      value={image}
+      onChange={(e) => setImage(e.target.value)}
+      className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white outline-none transition-all duration-300 placeholder:text-gray-500 hover:border-violet-400/40 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/30"
+    />
+
+  </div>
+</div>
 
           {/* Password */}
 
@@ -95,6 +180,8 @@ export default function RegisterForm() {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="********"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-12 pr-14 text-white outline-none transition-all duration-300 placeholder:text-gray-500 hover:border-violet-400/40 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/30"
               />
 
@@ -115,26 +202,36 @@ export default function RegisterForm() {
 
           {/* Confirm Password */}
 
-          <div>
-            <label className="mb-2 block text-sm text-gray-300">
-              Confirm Password
-            </label>
+          <div className="relative">
 
-            <div className="relative">
+  <Lock
+    size={20}
+    className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
+  />
 
-              <Lock
-                size={20}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
-              />
+  <input
+    type={showConfirmPassword ? "text" : "password"}
+    placeholder="Confirm Password"
+    value={confirmPassword}
+    onChange={(e) => setConfirmPassword(e.target.value)}
+    className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-12 pr-14 text-white outline-none transition-all duration-300 placeholder:text-gray-500 hover:border-violet-400/40 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/30"
+  />
 
-              <input
-                type="password"
-                placeholder="********"
-                className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white outline-none transition-all duration-300 placeholder:text-gray-500 hover:border-violet-400/40 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/30"
-              />
+  <button
+    type="button"
+    onClick={() =>
+      setShowConfirmPassword(!showConfirmPassword)
+    }
+    className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 transition hover:text-white"
+  >
+    {showConfirmPassword ? (
+      <EyeOff size={20} />
+    ) : (
+      <Eye size={20} />
+    )}
+  </button>
 
-            </div>
-          </div>
+</div>
 
           {/* Terms */}
 
@@ -159,16 +256,30 @@ export default function RegisterForm() {
           {/* Register Button */}
 
           <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: .98 }}
-            className="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 py-4 font-semibold text-white transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/40"
-          >
-            <span className="relative z-10">
-              Create Account
-            </span>
+  type="submit"
+  disabled={loading}
+  whileHover={{ scale: 1.02 }}
+  whileTap={{ scale: 0.98 }}
+  className="group relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 py-4 font-semibold text-white transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/40 disabled:cursor-not-allowed disabled:opacity-70"
+>
+  {loading ? (
+    <>
+      <Loader2
+        size={20}
+        className="mr-2 animate-spin"
+      />
+      Creating...
+    </>
+  ) : (
+    <>
+      <span className="relative z-10">
+        Create Account
+      </span>
 
-            <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-700 group-hover:translate-x-full" />
-          </motion.button>
+      <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-700 group-hover:translate-x-full" />
+    </>
+  )}
+</motion.button>
 
           {/* Divider */}
 
@@ -187,18 +298,16 @@ export default function RegisterForm() {
           {/* Google */}
 
           <button
-            type="button"
-            className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/5 py-4 text-white transition hover:bg-white/10"
-          >
-            <img
+  type="button"
+  className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/5 py-4 text-white transition hover:bg-white/10"
+>
+    <img
               src="https://www.svgrepo.com/show/475656/google-color.svg"
+              alt="Google"
               className="h-5 w-5"
-              alt=""
             />
-
-            Continue with Google
-
-          </button>
+    Continue with Google
+    </button>
 
         </form>
 
