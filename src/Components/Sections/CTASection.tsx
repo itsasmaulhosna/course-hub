@@ -6,7 +6,7 @@ import { ArrowRight, BookOpen, UserPlus } from "lucide-react";
 
 export default function CTASection() {
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-24 dark:bg-slate-950 ">
+    <section className="relative overflow-hidden bg-slate-50 py-15 dark:bg-slate-950 ">
 
       {/* ================= Background ================= */}
 
@@ -417,32 +417,8 @@ lg:px-20
         </motion.div>
       </div>
 
-      {/* ================= Floating Decorations ================= */}
 
       
-
-      <motion.div
-        animate={{
-          y: [0, 20, 0],
-          rotate: [0, -12, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-        }}
-        className="
-          absolute
-          bottom-20
-          right-20
-          hidden
-          h-14
-          w-14
-          rounded-2xl
-          border
-          border-violet-300/40
-          lg:block
-        "
-      />
 
       {/* ================= Bottom Glow ================= */}
 

@@ -1,3 +1,4 @@
+import Footer from "@/Components/Footer/Footer";
 import "./globals.css";
 import Navbar from "@/Components/Navbar/Navbar";
 import ThemeProvider from "@/Components/providers/ThemeProvider";
@@ -13,6 +14,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar isLoggedIn={false} />
           <main>{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
