@@ -69,6 +69,16 @@ const handleRegister = async (
   }
 };
 
+const handleGoogleLogin = async () => {
+  const { error } = await signIn.social({
+    provider: "google",
+    callbackURL: "/",
+  });
+
+  if (error) {
+    toast.error(error.message);
+  }
+};
   return (
     <motion.section
       initial={{ opacity: 0, x: 80 }}
@@ -299,6 +309,8 @@ const handleRegister = async (
 
           <button
   type="button"
+  onClick={handleGoogleLogin}
+
   className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/5 py-4 text-white transition hover:bg-white/10"
 >
     <img

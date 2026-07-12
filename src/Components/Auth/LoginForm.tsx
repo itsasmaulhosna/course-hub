@@ -3,9 +3,63 @@
 import { useState } from "react";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { motion } from "framer-motion";
+import { signIn } from "@/lib/auth-client";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
+
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+
+const [loading, setLoading] = useState(false);
+
+const handleLogin = async (
+  e: React.FormEvent<HTMLFormElement>
+) => {
+  e.preventDefault();
+
+  if (!email || !password) {
+    toast.error("Email and Password are required");
+    return;
+  }
+
+  try {
+    setLoading(true);
+
+    const { data, error } = await signIn.email({
+      email,
+      password,
+    });
+
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+
+    toast.success("Login Successful 🎉");
+
+    router.push("/");
+  } catch (err) {
+    console.error(err);
+    toast.error("Something went wrong");
+  } finally {
+    setLoading(false);
+  }
+};
+const handleGoogleLogin = async () => {
+  const { error } = await signIn.social({
+    provider: "google",
+    callbackURL: "/",
+  });
+
+  if (error) {
+    toast.error(error.message);
+  }
+};
 
   return (
     <motion.section
@@ -28,7 +82,8 @@ export default function LoginForm() {
 
         {/* Form */}
 
-        <form className="mt-10 space-y-6">
+        <form onSubmit={handleLogin}
+ className="mt-10 space-y-6">
 
           {/* Email */}
 
@@ -45,11 +100,13 @@ export default function LoginForm() {
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
               />
 
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white outline-none transition-all duration-300 placeholder:text-gray-500 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/30"
-              />
+<input
+  type="email"
+  placeholder="Enter your email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-12 pr-4 text-white outline-none transition-all duration-300 placeholder:text-gray-500 hover:border-violet-400/40 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/30"
+/>
 
             </div>
 
@@ -73,6 +130,8 @@ export default function LoginForm() {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-12 pr-14 text-white outline-none transition-all duration-300 placeholder:text-gray-500 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/30"
               />
 
@@ -118,19 +177,31 @@ export default function LoginForm() {
 
           {/* Login */}
 
-          <motion.button
-            whileHover={{
-              scale: 1.02,
-            }}
-            whileTap={{
-              scale: 0.98,
-            }}
-            type="submit"
-            className="w-full cursor-pointer rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 py-4 font-semibold text-white transition-all duration-300 hover:shadow-xl hover:shadow-violet-500/30"
-          >
-            Sign In
-          </motion.button>
+<motion.button
+  type="submit"
+  disabled={loading}
+  whileHover={{ scale: 1.02 }}
+  whileTap={{ scale: 0.98 }}
+  className="group relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 py-4 font-semibold text-white transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/40 disabled:cursor-not-allowed disabled:opacity-70"
+>
+  {loading ? (
+    <>
+      <Loader2
+        size={20}
+        className="mr-2 animate-spin"
+      />
+      Signing In...
+    </>
+  ) : (
+    <>
+      <span className="relative z-10">
+        Sign In
+      </span>
 
+      <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-700 group-hover:translate-x-full" />
+    </>
+  )}
+</motion.button>
           {/* Divider */}
 
           <div className="flex items-center gap-4">
@@ -149,6 +220,8 @@ export default function LoginForm() {
 
           <button
             type="button"
+            onClick={handleGoogleLogin}
+
             className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/5 py-4 font-medium text-white transition-all duration-300 hover:bg-white/10"
           >
             <img
