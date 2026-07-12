@@ -45,7 +45,7 @@ export default function Navbar() {
 
   const userRoutes: Route[] = [
     { name: "Home", path: "/" },
-    { name: "Courses", path: "/courses" },
+    { name: "Courses", path: "/all-courses" },
     // { name: "My Courses", path: "/my-courses" },
     // { name: "Add Course", path: "/courses/add" },
     // { name: "Manage Courses", path: "/courses/manage" },

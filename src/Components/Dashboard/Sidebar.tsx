@@ -7,6 +7,7 @@ import {
   PlusCircle,
   BookOpen,
   FolderKanban,
+  House,
 } from "lucide-react";
 
 const menus = [
@@ -30,6 +31,8 @@ const menus = [
     href: "/dashboard/manage-courses",
     icon: FolderKanban,
   },
+  
+
 ];
 
 export default function Sidebar() {
@@ -51,6 +54,14 @@ export default function Sidebar() {
       </div>
 
       <nav className="space-y-2 p-5">
+          <Link
+    href="/"
+    className="mb-4 flex items-center gap-3 rounded-xl border border-slate-200 px-4 py-3 text-slate-600 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+  >
+    <House size={20} />
+    <span className="font-medium">Back to Home</span>
+  </Link>
+
 
         {menus.map((menu) => {
           const Icon = menu.icon;
