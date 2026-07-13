@@ -58,7 +58,7 @@ export default function Hero() {
           {/* Heading */}
 
           <h1
-            className="
+            className={`
             animate-slide-left
             delay-300
             text-center
@@ -72,7 +72,7 @@ export default function Hero() {
             xl:text-6xl
             
             dark:text-white
-          "
+          `}
           >
             Learn New Skills
 
@@ -92,12 +92,13 @@ export default function Hero() {
           {/* Description */}
 
           <p
-            className="
+            className={`
             animate-slide-left
             delay-500
             mt-8
             mx-auto
-max-w-xl
+            max-w-xl
+          
 text-center
 lg:mx-0
 lg:text-left
@@ -106,7 +107,7 @@ lg:text-left
             text-slate-600
             lg:text-left
             dark:text-slate-300
-          "
+          `}
           >
             Explore thousands of high-quality online courses
             from industry experts. Build your skills, earn
@@ -144,7 +145,7 @@ lg:text-left
     width={2000}
     height={2000}
     priority
-    className="
+    className={`
       relative
       z-10
       h-auto
@@ -167,7 +168,7 @@ lg:text-left
       lg:mt-45
 
       animate-float
-    "
+    `}
   />
 </div>
       </div>

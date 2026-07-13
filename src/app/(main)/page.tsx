@@ -1,6 +1,7 @@
 import Hero from "@/Components/Home/Hero";
 import CTASection from "@/Components/Sections/CTASection";
 import FAQSection from "@/Components/Sections/FAQSection";
+import FeaturedCourses from "@/Components/Sections/FeaturedCourses";
 import HowItWorks from "@/Components/Sections/HowItWorks";
 import LatestTuitionPosts from "@/Components/Sections/LatestTuitionPosts.";
 import PopularSubjects from "@/Components/Sections/PopularSubjects";
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero/>
       <PopularSubjects/>
       <LatestTuitionPosts/>
+      <FeaturedCourses/>
       <WhyChooseUs/>
       <HowItWorks/>
       <StudentTestimonials/>

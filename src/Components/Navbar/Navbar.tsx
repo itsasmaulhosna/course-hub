@@ -38,7 +38,7 @@ export default function Navbar() {
 
   const guestRoutes: Route[] = [
     { name: "Home", path: "/" },
-    { name: "Courses", path: "/courses" },
+    { name: "Courses", path: "/all-courses" },
     // { name: "About", path: "/about" },
     // { name: "Contact", path: "/contact" },
   ];

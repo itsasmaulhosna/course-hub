@@ -9,8 +9,8 @@ export default function HeroButtons() {
       {/* Explore Button */}
 
       <Link
-        href="/courses"
-        className="
+        href="/all-courses"
+        className={`
         group
         inline-flex
         items-center
@@ -33,7 +33,7 @@ export default function HeroButtons() {
         hover:shadow-2xl
         hover:shadow-blue-500/40
         cursor-pointer
-        "
+        `}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +55,7 @@ export default function HeroButtons() {
       {/* How It Works */}
 
       <button
-        className="
+        className={`
         group
         inline-flex
         cursor-pointer
@@ -81,7 +81,7 @@ export default function HeroButtons() {
         dark:bg-slate-900/60
         dark:text-white
         dark:hover:border-blue-400
-      "
+      `}
       >
         <PlayCircle
           size={24}

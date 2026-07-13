@@ -22,7 +22,7 @@ export default function CoursesPage() {
       try {
 
         const res =
-          await fetch("/api/courses");
+          await fetch("/api/public/course");
 
         const data =
           await res.json();
