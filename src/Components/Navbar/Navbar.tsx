@@ -38,17 +38,17 @@ export default function Navbar() {
 
   const guestRoutes: Route[] = [
     { name: "Home", path: "/" },
-    { name: "Courses", path: "/all-courses" },
-    // { name: "About", path: "/about" },
-    // { name: "Contact", path: "/contact" },
+    { name: "All-Courses", path: "/all-courses" },
+    { name: "About", path: "/about" },
+     { name: "Support", path: "/support" },
+     { name: "Contact", path: "/contact" },
   ];
 
   const userRoutes: Route[] = [
     { name: "Home", path: "/" },
-    { name: "Courses", path: "/all-courses" },
-    // { name: "My Courses", path: "/my-courses" },
-    // { name: "Add Course", path: "/courses/add" },
-    // { name: "Manage Courses", path: "/courses/manage" },
+    { name: "All-Courses", path: "/all-courses" },
+   
+    
   ];
 
   const routes = isLoggedIn
@@ -70,7 +70,7 @@ export default function Navbar() {
 
         <Link href="/" className="shrink-0">
           <Image
-            src="/images/logo.png"
+            src="/images/nav-logo.png"
             alt="CourseHub Logo"
             width={200}
             height={200}
@@ -228,22 +228,35 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="ml-auto lg:hidden"
-        >
-          {open ? (
-            <X size={28} />
-          ) : (
-            <Menu size={28} />
-          )}
-        </button>
+        {/* Mobile Right */}
+<div className="ml-auto flex items-center gap-3 lg:hidden">
+  <ThemeToggle />
+
+  <button
+    onClick={() => setOpen(!open)}
+    className="rounded-lg p-2 transition hover:bg-gray-100 dark:hover:bg-slate-800"
+    aria-label="Toggle Menu"
+  >
+    {open ? (
+      <X size={28} />
+    ) : (
+      <Menu size={28} />
+    )}
+  </button>
+</div>
 
       </div>
             {/* Mobile Menu */}
 
       {open && (
         <div className="border-t border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-900 lg:hidden">
+<div className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-700">
+      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+        Theme
+      </span>
+
+      <ThemeToggle />
+    </div>
 
           {isLoggedIn && (
             <div className="flex items-center gap-4 border-b border-slate-200 p-5 dark:border-slate-700">
