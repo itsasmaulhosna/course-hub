@@ -66,7 +66,7 @@ export default function Navbar() {
   return (
   <>
     
-  <header className="sticky top-0 z-50 border-b border-gray-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+  <header className="sticky top-0 z-[100] border-b border-gray-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
       <div className="mx-auto flex h-20 max-w-7xl items-center px-6">
 
         {/* Logo */}
@@ -252,14 +252,24 @@ export default function Navbar() {
             {/* Mobile Menu */}
 
       {open && (
-        <div className="border-t border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-900 lg:hidden">
-<div className="flex items-center justify-between border-b border-slate-200 px-6 py-4 dark:border-slate-700">
-      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-        Theme
-      </span>
+  <div
+    className={`
+      fixed
+      top-20
+      left-0
+      right-0
+      bottom-0
+      z-40
+      overflow-y-auto
+      border-t
+      border-gray-200
+      bg-white
+      dark:border-slate-800
+      dark:bg-slate-900
+      lg:hidden
+    `}
+  >
 
-      <ThemeToggle />
-    </div>
 
           {isLoggedIn && (
             <div className="flex items-center gap-4 border-b border-slate-200 p-5 dark:border-slate-700">

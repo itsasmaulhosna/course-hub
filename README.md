@@ -1,36 +1,259 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 CourseHub
 
-## Getting Started
+> A modern Course Management Platform built with Next.js 15, Better Auth, MongoDB, and Tailwind CSS.
 
-First, run the development server:
+CourseHub is a full-stack course management application where users can explore courses, register/login securely, view course details, and manage courses through a clean and responsive dashboard.
+
+---
+
+## 🌐 Live Demo
+
+🔗 Live Website: https://course-hub-pearl.vercel.app
+
+---
+
+## 📂 Repositories
+
+## https://github.com/itsasmaulhosna/course-hub
+
+## Demo Credentials
+
+Email: demo@coursehub.com
+
+Password: Demo@123
+
+---
+
+# ✨ Features
+
+## Authentication
+
+- Secure authentication using Better Auth
+- User Registration
+- User Login
+- Protected Dashboard
+- Persistent Sessions
+- Logout functionality
+
+---
+
+## Courses
+
+- Browse all available courses
+- Course Details page
+- Search courses
+- Sort courses by:
+  - Price (Low → High)
+  - Price (High → Low)
+  - Title (A → Z)
+- Responsive Course Cards
+- Loading States
+- Empty State UI
+
+---
+
+## Dashboard
+
+- Beautiful Dashboard UI
+- Welcome Section
+- Statistics Cards
+- Add Course
+- Manage Courses
+- My Courses
+- Analytics Chart (Recharts)
+
+---
+
+## Responsive Design
+
+- Mobile Friendly
+- Tablet Optimized
+- Desktop Optimized
+- Dark Mode Support
+
+---
+
+## UI Features
+
+- Modern Hero Section
+- Animated Buttons
+- Smooth Hover Effects
+- Skeleton Loading
+- Beautiful Cards
+- Responsive Layout
+- Clean Typography
+
+---
+
+# 🛠 Tech Stack
+
+### Frontend
+
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- Recharts
+
+### Backend
+
+- Next.js API Routes
+- MongoDB
+- Better Auth
+
+---
+
+# 📁 Project Structure
+
+```
+src
+│
+├── app
+│   ├── dashboard
+│   ├── login
+│   ├── register
+│   ├── all-courses
+│   └── api
+│
+├── Components
+│   ├── Common
+│   ├── Course
+│   ├── Dashboard
+│   ├── Hero
+│   └── Navbar
+│
+├── lib
+│
+├── hooks
+│
+├── types
+│
+└── utils
+```
+
+---
+
+# 🚀 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/itsasmaulhosna/course-hub.git
+```
+
+Go to project
+
+```bash
+cd course-hub
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Create environment file
+
+```env
+MONGODB_URI=
+
+BETTER_AUTH_SECRET=
+
+BETTER_AUTH_URL=http://localhost:3000
+
+GOOGLE_CLIENT_ID=
+
+GOOGLE_CLIENT_SECRET=
+```
+
+Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 📦 Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+Run production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 🔍 Core Functionalities
 
-## Deploy on Vercel
+- Authentication
+- Authorization
+- CRUD Operations
+- Search
+- Sorting
+- Responsive Design
+- API Integration
+- Protected Routes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# 📊 Packages Used
+
+- next
+- react
+- typescript
+- tailwindcss
+- better-auth
+- mongodb
+- framer-motion
+- recharts
+- lucide-react
+- react-hot-toast
+
+---
+
+# 📱 Responsive Support
+
+- ✅ Mobile
+- ✅ Tablet
+- ✅ Laptop
+- ✅ Desktop
+
+---
+
+# 🔐 Security
+
+- Better Auth Authentication
+- Protected Routes
+- Environment Variables
+- Secure API Access
+
+---
+
+# 🔮 Future Improvements
+
+- Wishlist
+- Course Enrollment
+- Payment Gateway
+- Video Lessons
+- Progress Tracking
+- Course Reviews
+- Certificates
+- Instructor Dashboard
+- Admin Analytics
+- Email Notifications
+
+---
+
+# ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub.
+
+It helps others discover the project and motivates further development.

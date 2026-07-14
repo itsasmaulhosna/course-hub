@@ -84,6 +84,28 @@ const handleGoogleLogin = async () => {
 
         <form onSubmit={handleLogin}
  className="mt-10 space-y-6">
+  <div className="mb-6 rounded-xl border border-violet-500/20 bg-violet-500/10 p-4">
+
+  <h3 className="mb-2 font-semibold text-violet-300">
+    Demo Account
+  </h3>
+
+  <p className="mb-4 text-sm text-gray-400">
+    Click the button below to auto-fill demo credentials.
+  </p>
+
+  <button
+    type="button"
+    onClick={() => {
+      setEmail("demo@coursehub.com");
+      setPassword("Demo@123");
+    }}
+    className="w-full cursor-pointer rounded-lg bg-violet-600 py-3 font-medium text-white transition hover:bg-violet-700"
+  >
+    Use Demo Account
+  </button>
+
+</div>
 
           {/* Email */}
 
