@@ -19,15 +19,17 @@ const [relatedCourses, setRelatedCourses] =
     const [loading, setLoading] = useState(false);
 
 const handleEnroll = async () => {
+  if (!course) return;
+
   setLoading(true);
 
   setTimeout(() => {
-    const courses = JSON.parse(
+    const courses: Course[] = JSON.parse(
       localStorage.getItem("myCourses") || "[]"
     );
 
     const exists = courses.find(
-      (item: Course) => item._id === course._id
+      (item) => item._id === course._id
     );
 
     if (exists) {
@@ -48,7 +50,6 @@ const handleEnroll = async () => {
     setLoading(false);
 
     router.push("/dashboard/my-courses");
-
   }, 1000);
 };
     useEffect(()=>{

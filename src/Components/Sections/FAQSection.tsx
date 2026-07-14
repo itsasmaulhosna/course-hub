@@ -79,7 +79,7 @@ export default function FAQSection() {
                 onClick={() =>
                   setActive(active === index ? null : index)
                 }
-                className="flex w-full items-center justify-between p-6 text-left"
+                className="flex w-full items-center justify-between p-6 text-left cursor-pointer"
               >
                 <span className="text-lg font-semibold text-slate-900 dark:text-white">
                   {faq.question}

@@ -12,9 +12,9 @@ import {
 import { ArrowUp, GraduationCap } from "lucide-react";
 const quickLinks = [
   { name: "Home", href: "/" },
-  { name: "Find Tutors", href: "/tutors" },
-  { name: "Tuition Posts", href: "/tuition-posts" },
-  { name: "Become Tutor", href: "/become-a-tutor" },
+  { name: "All Courses", href: "/all-courses" },
+  { name: "About", href: "/about" },
+  { name: "Support", href: "/support" },
 ];
 
 const subjects = [
@@ -93,22 +93,22 @@ export default function Footer() {
 
                 {
                   icon: FaFacebookF,
-                  href: "#",
+                  href: "https://www.facebook.com/iamAsmaULHosna",
                 },
 
                 {
                   icon: FaLinkedinIn,
-                  href: "#",
+                  href: "https://www.linkedin.com/in/asma-ul-hosna-dev/",
                 },
 
                 {
                   icon: FaGithub,
-                  href: "#",
+                  href: "https://github.com/itsasmaulhosna",
                 },
 
                 {
                   icon: FaInstagram,
-                  href: "#",
+                  href: "https://www.instagram.com/iamasmaulhosnamaya/?hl=en",
                 },
 
               ].map((item, index) => {
@@ -279,7 +279,7 @@ export default function Footer() {
                 behavior: "smooth",
               })
             }
-            className="
+            className={`
             flex
             items-center
             gap-2
@@ -290,7 +290,8 @@ export default function Footer() {
             font-medium
             text-white
             hover:bg-blue-700
-            "
+            cursor-pointer
+            `}
           >
             Back to Top
 

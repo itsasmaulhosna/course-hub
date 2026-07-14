@@ -142,7 +142,7 @@ export default function ContactPage() {
                   </h3>
 
                   <p className="text-muted-foreground">
-                    +880 1XXX-XXXXXX
+                    +880 15184-55465
                   </p>
                 </div>
 

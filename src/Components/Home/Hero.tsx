@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import Image from "next/image";
@@ -7,7 +9,7 @@ import HeroStats from "./HeroStats";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] lg:min-h-screen overflow-hidden">
+    <section className="relative min-h-[90vh] lg:min-h-[70vh] overflow-hidden">
 
       {/* Background Image */}
 
@@ -39,19 +41,42 @@ export default function Hero() {
 
           {/* Badge */}
 
-          <div className="animate-slide-left delay-100 mx-auto mb-6 inline-flex items-center rounded-full border border-blue-100 bg-white/70 px-5 py-3 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/60 lg:mx-0">
+          <div className="animate-slide-left delay-100 mx-auto mb-4 lg:mx-0 inline-flex items-center rounded-full border border-blue-100 bg-white/70 px-5 py-3 shadow-lg backdrop-blur dark:border-slate-700 dark:bg-slate-900/60 lg:mx-0">
 
-            <span className="mr-2 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+<span
+  className="
+    mr-3
+    flex
+    h-10
+    w-10
+    items-center
+    justify-center
+    rounded-full
+    bg-gradient-to-r
+    from-blue-600
+    to-indigo-600
+    text-lg
+    text-white
+    animate-bounce
+    shadow-lg
+  "
+>
+  🎓
+</span>
 
-              🎓
-
-            </span>
-
-            <span className="font-semibold text-slate-700 dark:text-white">
-
-              Empower Your Future
-
-            </span>
+            <span
+  className="
+    font-semibold
+    tracking-wide
+    text-slate-700
+    transition-colors
+    duration-300
+    group-hover:text-blue-600
+    dark:text-white
+  "
+>
+  Empower Your Future
+</span>
 
           </div>
 

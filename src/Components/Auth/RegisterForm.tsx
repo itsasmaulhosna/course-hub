@@ -12,7 +12,7 @@ import {
   EyeOff,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { signUp } from "@/lib/auth-client";
+import { signIn,signUp } from "@/lib/auth-client";
 
 export default function RegisterForm() {
     const router = useRouter();

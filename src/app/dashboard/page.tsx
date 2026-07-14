@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import { useSession } from "@/lib/auth-client";
+import AnalyticsChart from "@/Components/Dashboard/AnalyticsChart";
 
 export default function DashboardPage() {
   const { data: session } = useSession();
@@ -67,7 +68,7 @@ export default function DashboardPage() {
           </h4>
 
           <h2 className="mt-3 text-4xl font-bold">
-            0
+            300+
           </h2>
         </div>
 
@@ -77,7 +78,7 @@ export default function DashboardPage() {
           </h4>
 
           <h2 className="mt-3 text-4xl font-bold">
-            0
+            150+
           </h2>
         </div>
 
@@ -87,7 +88,7 @@ export default function DashboardPage() {
           </h4>
 
           <h2 className="mt-3 text-4xl font-bold">
-            0
+            600+
           </h2>
         </div>
 
@@ -148,6 +149,14 @@ export default function DashboardPage() {
         </div>
 
       </div>
+
+      {/* Analytics */}
+
+<div className="mt-12">
+
+  <AnalyticsChart />
+
+</div>
 
     </section>
   );

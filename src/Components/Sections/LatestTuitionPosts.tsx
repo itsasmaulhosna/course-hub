@@ -185,7 +185,7 @@ export default function LatestTuitionPosts() {
                 </div>
 
                 <button
-                  className="
+                  className={`
                   mt-8
                   w-full
                   rounded-xl
@@ -199,7 +199,8 @@ export default function LatestTuitionPosts() {
                   items-center
                   justify-center
                   gap-2
-                  "
+                  cursor-pointer
+                  `}
                 >
                   View Details
                   <ArrowRight
